@@ -1,6 +1,20 @@
 {
-  "updateTime": "2020-02-12T20:50:03.503211Z",
+  "updateTime": "2020-02-12T21:01:23.468961Z",
   "sources": [
+    {
+      "git": {
+        "name": ".",
+        "remote": "git@github.com:googleapis/python-redis.git",
+        "sha": "53d302baa0e1357d1f3dc9fc9ca74db145ecf78e"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "git@github.com:GoogleCloudPlatform/synthtool.git",
+        "sha": "e7660b704f319e2c1ea45d421b86b008d48ae37e"
+      }
+    },
     {
       "generator": {
         "name": "artman",
@@ -12,15 +26,16 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "d5e8a8953f2acdfe96fb15e85eb2f33739623957",
-        "internalRef": "294703703"
+        "sha": "2c17ac33b226194041155bb5340c3f34733f1b3a",
+        "internalRef": "294734008",
+        "log": "2c17ac33b226194041155bb5340c3f34733f1b3a\nAdd parameter to sample generated for UpdateInstance. Related to https://github.com/googleapis/python-redis/issues/4\n\nPiperOrigin-RevId: 294734008\n\n"
       }
     },
     {
       "template": {
-        "name": "python_library",
+        "name": "python_split_library",
         "origin": "synthtool.gcp",
-        "version": "2019.5.2"
+        "version": "2020.2.4"
       }
     }
   ],

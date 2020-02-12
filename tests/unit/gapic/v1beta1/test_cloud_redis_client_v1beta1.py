@@ -262,7 +262,7 @@ class TestCloudRedisClient(object):
 
     def test_update_instance(self):
         # Setup Expected Response
-        name = "name3373707"
+        name_2 = "name2-1052831874"
         display_name_2 = "displayName21615000987"
         location_id = "locationId552319461"
         alternative_location_id = "alternativeLocationId-718920621"
@@ -276,7 +276,7 @@ class TestCloudRedisClient(object):
         authorized_network = "authorizedNetwork-1733809270"
         persistence_iam_identity = "persistenceIamIdentity1061944584"
         expected_response = {
-            "name": name,
+            "name": name_2,
             "display_name": display_name_2,
             "location_id": location_id,
             "alternative_location_id": alternative_location_id,
@@ -309,8 +309,13 @@ class TestCloudRedisClient(object):
         paths = [paths_element, paths_element_2]
         update_mask = {"paths": paths}
         display_name = "UpdatedDisplayName"
+        name = "projects/<project-name>/locations/<location>/instances/<instance>"
         memory_size_gb = 4
-        instance = {"display_name": display_name, "memory_size_gb": memory_size_gb}
+        instance = {
+            "display_name": display_name,
+            "name": name,
+            "memory_size_gb": memory_size_gb,
+        }
 
         response = client.update_instance(update_mask, instance)
         result = response.result()
@@ -344,8 +349,13 @@ class TestCloudRedisClient(object):
         paths = [paths_element, paths_element_2]
         update_mask = {"paths": paths}
         display_name = "UpdatedDisplayName"
+        name = "projects/<project-name>/locations/<location>/instances/<instance>"
         memory_size_gb = 4
-        instance = {"display_name": display_name, "memory_size_gb": memory_size_gb}
+        instance = {
+            "display_name": display_name,
+            "name": name,
+            "memory_size_gb": memory_size_gb,
+        }
 
         response = client.update_instance(update_mask, instance)
         exception = response.exception()
