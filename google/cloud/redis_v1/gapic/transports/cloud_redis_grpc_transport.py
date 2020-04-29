@@ -117,15 +117,8 @@ class CloudRedisGrpcTransport(object):
     def list_instances(self):
         """Return the gRPC stub for :meth:`CloudRedisClient.list_instances`.
 
-        Lists all Redis instances owned by a project in either the specified
-        location (region) or all locations.
-
-        The location should have the following format:
-
-        -  ``projects/{project_id}/locations/{location_id}``
-
-        If ``location_id`` is specified as ``-`` (wildcard), then all regions
-        available to the project are queried, and the results are aggregated.
+        Required. Data destination URI (e.g. 'gs://my_bucket/my_object').
+        Existing files will be overwritten.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -151,19 +144,8 @@ class CloudRedisGrpcTransport(object):
     def create_instance(self):
         """Return the gRPC stub for :meth:`CloudRedisClient.create_instance`.
 
-        Creates a Redis instance based on the specified tier and memory size.
-
-        By default, the instance is accessible from the project's `default
-        network <https://cloud.google.com/compute/docs/networks-and-firewalls#networks>`__.
-
-        The creation is executed asynchronously and callers may check the
-        returned operation to track its progress. Once the operation is
-        completed the Redis instance will be fully functional. Completed
-        longrunning.Operation will contain the new instance object in the
-        response field.
-
-        The returned operation is automatically deleted after a few hours, so
-        there is no need to call DeleteOperation.
+        Input and output type names. These are resolved in the same way as
+        FieldDescriptorProto.type_name, but must refer to a message type.
 
         Returns:
             Callable: A callable which accepts the appropriate

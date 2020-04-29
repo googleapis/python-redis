@@ -49,27 +49,8 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-redis").ve
 
 class CloudRedisClient(object):
     """
-    Configures and manages Cloud Memorystore for Redis instances
-
-    Google Cloud Memorystore for Redis v1beta1
-
-    The ``redis.googleapis.com`` service implements the Google Cloud
-    Memorystore for Redis API and defines the following resource model for
-    managing Redis instances:
-
-    -  The service works with a collection of cloud projects, named:
-       ``/projects/*``
-    -  Each project has a collection of available locations, named:
-       ``/locations/*``
-    -  Each location has a collection of Redis instances, named:
-       ``/instances/*``
-    -  As such, Redis instances are resources of the form:
-       ``/projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-
-    Note that location\_id must be refering to a GCP ``region``; for
-    example:
-
-    -  ``projects/redpepper-1290/locations/us-central1/instances/my-redis``
+    Input and output type names. These are resolved in the same way as
+    FieldDescriptorProto.type_name, but must refer to a message type.
     """
 
     SERVICE_ADDRESS = "redis.googleapis.com:443"
@@ -240,15 +221,8 @@ class CloudRedisClient(object):
         metadata=None,
     ):
         """
-        Lists all Redis instances owned by a project in either the specified
-        location (region) or all locations.
-
-        The location should have the following format:
-
-        -  ``projects/{project_id}/locations/{location_id}``
-
-        If ``location_id`` is specified as ``-`` (wildcard), then all regions
-        available to the project are queried, and the results are aggregated.
+        An annotation that describes a resource reference, see
+        ``ResourceReference``.
 
         Example:
             >>> from google.cloud import redis_v1beta1
@@ -272,9 +246,8 @@ class CloudRedisClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. The resource name of the instance location using the form:
-                ``projects/{project_id}/locations/{location_id}`` where ``location_id``
-                refers to a GCP region.
+            parent (str): For extensions, this is the name of the type being extended. It is
+                resolved in the same manner as type_name.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -364,9 +337,11 @@ class CloudRedisClient(object):
             >>> response = client.get_instance(name)
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
-                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
+            name (str): If set, all the classes from the .proto file are wrapped in a single
+                outer class with the given name. This applies to both Proto1 (equivalent
+                to the old "--one_java_file" option) and Proto2 (where a .proto always
+                translates to a single class, but you may want to explicitly choose the
+                class name).
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -425,19 +400,9 @@ class CloudRedisClient(object):
         metadata=None,
     ):
         """
-        Creates a Redis instance based on the specified tier and memory size.
-
-        By default, the instance is accessible from the project's `default
-        network <https://cloud.google.com/compute/docs/networks-and-firewalls#networks>`__.
-
-        The creation is executed asynchronously and callers may check the
-        returned operation to track its progress. Once the operation is
-        completed the Redis instance will be fully functional. Completed
-        longrunning.Operation will contain the new instance object in the
-        response field.
-
-        The returned operation is automatically deleted after a few hours, so
-        there is no need to call DeleteOperation.
+        If type_name is set, this need not be set. If both this and
+        type_name are set, this must be one of TYPE_ENUM, TYPE_MESSAGE or
+        TYPE_GROUP.
 
         Example:
             >>> from google.cloud import redis_v1beta1
@@ -466,15 +431,16 @@ class CloudRedisClient(object):
             parent (str): Required. The resource name of the instance location using the form:
                 ``projects/{project_id}/locations/{location_id}`` where ``location_id``
                 refers to a GCP region.
-            instance_id (str): Required. The logical name of the Redis instance in the customer project
-                with the following restrictions:
+            instance_id (str): STANDARD_HA tier: highly available primary/replica instances
+            instance (Union[dict, ~google.cloud.redis_v1beta1.types.Instance]): Lists all Redis instances owned by a project in either the specified
+                location (region) or all locations.
 
-                -  Must contain only lowercase letters, numbers, and hyphens.
-                -  Must start with a letter.
-                -  Must be between 1-40 characters.
-                -  Must end with a number or a letter.
-                -  Must be unique within the customer project / location
-            instance (Union[dict, ~google.cloud.redis_v1beta1.types.Instance]): Required. A Redis [Instance] resource
+                The location should have the following format:
+
+                -  ``projects/{project_id}/locations/{location_id}``
+
+                If ``location_id`` is specified as ``-`` (wildcard), then all regions
+                available to the project are queried, and the results are aggregated.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.redis_v1beta1.types.Instance`
@@ -575,19 +541,18 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            update_mask (Union[dict, ~google.cloud.redis_v1beta1.types.FieldMask]): Required. Mask of fields to update. At least one path must be supplied
-                in this field. The elements of the repeated paths field may only include
-                these fields from ``Instance``:
-
-                -  ``displayName``
-                -  ``labels``
-                -  ``memorySizeGb``
-                -  ``redisConfig``
+            update_mask (Union[dict, ~google.cloud.redis_v1beta1.types.FieldMask]): JSON name of this field. The value is set by protocol compiler. If
+                the user has set a "json_name" option on this field, that option's value
+                will be used. Otherwise, it's deduced from the field's name by
+                converting it to camelCase.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.redis_v1beta1.types.FieldMask`
-            instance (Union[dict, ~google.cloud.redis_v1beta1.types.Instance]): Required. Update description. Only fields specified in update\_mask are
-                updated.
+            instance (Union[dict, ~google.cloud.redis_v1beta1.types.Instance]): The name of the uninterpreted option. Each string represents a
+                segment in a dot-separated name. is_extension is true iff a segment
+                represents an extension (denoted with parentheses in options specs in
+                .proto files). E.g.,{ ["foo", false], ["bar.baz", true], ["qux", false]
+                } represents "foo.(bar.baz).qux".
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.redis_v1beta1.types.Instance`
@@ -688,9 +653,7 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
-                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
+            name (str): See ``HttpRule``.
             input_config (Union[dict, ~google.cloud.redis_v1beta1.types.InputConfig]): Required. Specify data to be imported.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -790,9 +753,9 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
-                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
+            name (str): A developer-facing error message, which should be in English. Any
+                user-facing error message should be localized and sent in the
+                ``google.rpc.Status.details`` field, or localized by the client.
             output_config (Union[dict, ~google.cloud.redis_v1beta1.types.OutputConfig]): Required. Specify data to be exported.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -884,12 +847,136 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
+            name (str): A simple descriptor of a resource type.
+
+                ResourceDescriptor annotates a resource message (either by means of a
+                protobuf annotation or use in the service config), and associates the
+                resource's schema, the resource type, and the pattern of the resource
+                name.
+
+                Example:
+
+                ::
+
+                    message Topic {
+                      // Indicates this message defines a resource schema.
+                      // Declares the resource type in the format of {service}/{kind}.
+                      // For Kubernetes resources, the format is {api group}/{kind}.
+                      option (google.api.resource) = {
+                        type: "pubsub.googleapis.com/Topic"
+                        name_descriptor: {
+                          pattern: "projects/{project}/topics/{topic}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                          parent_name_extractor: "projects/{project}"
+                        }
+                      };
+                    }
+
+                The ResourceDescriptor Yaml config will look like:
+
+                ::
+
+                    resources:
+                    - type: "pubsub.googleapis.com/Topic"
+                      name_descriptor:
+                        - pattern: "projects/{project}/topics/{topic}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                          parent_name_extractor: "projects/{project}"
+
+                Sometimes, resources have multiple patterns, typically because they can
+                live under multiple parents.
+
+                Example:
+
+                ::
+
+                    message LogEntry {
+                      option (google.api.resource) = {
+                        type: "logging.googleapis.com/LogEntry"
+                        name_descriptor: {
+                          pattern: "projects/{project}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                          parent_name_extractor: "projects/{project}"
+                        }
+                        name_descriptor: {
+                          pattern: "folders/{folder}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                          parent_name_extractor: "folders/{folder}"
+                        }
+                        name_descriptor: {
+                          pattern: "organizations/{organization}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Organization"
+                          parent_name_extractor: "organizations/{organization}"
+                        }
+                        name_descriptor: {
+                          pattern: "billingAccounts/{billing_account}/logs/{log}"
+                          parent_type: "billing.googleapis.com/BillingAccount"
+                          parent_name_extractor: "billingAccounts/{billing_account}"
+                        }
+                      };
+                    }
+
+                The ResourceDescriptor Yaml config will look like:
+
+                ::
+
+                    resources:
+                    - type: 'logging.googleapis.com/LogEntry'
+                      name_descriptor:
+                        - pattern: "projects/{project}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                          parent_name_extractor: "projects/{project}"
+                        - pattern: "folders/{folder}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                          parent_name_extractor: "folders/{folder}"
+                        - pattern: "organizations/{organization}/logs/{log}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Organization"
+                          parent_name_extractor: "organizations/{organization}"
+                        - pattern: "billingAccounts/{billing_account}/logs/{log}"
+                          parent_type: "billing.googleapis.com/BillingAccount"
+                          parent_name_extractor: "billingAccounts/{billing_account}"
+
+                For flexible resources, the resource name doesn't contain parent names,
+                but the resource itself has parents for policy evaluation.
+
+                Example:
+
+                ::
+
+                    message Shelf {
+                      option (google.api.resource) = {
+                        type: "library.googleapis.com/Shelf"
+                        name_descriptor: {
+                          pattern: "shelves/{shelf}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                        }
+                        name_descriptor: {
+                          pattern: "shelves/{shelf}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Folder"
+                        }
+                      };
+                    }
+
+                The ResourceDescriptor Yaml config will look like:
+
+                ::
+
+                    resources:
+                    - type: 'library.googleapis.com/Shelf'
+                      name_descriptor:
+                        - pattern: "shelves/{shelf}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Project"
+                        - pattern: "shelves/{shelf}"
+                          parent_type: "cloudresourcemanager.googleapis.com/Folder"
+            data_protection_mode (~google.cloud.redis_v1beta1.types.DataProtectionMode): Required. Unique name of the resource in this scope including
+                project and location using the form:
                 ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
-            data_protection_mode (~google.cloud.redis_v1beta1.types.DataProtectionMode): Optional. Available data protection modes that the user can choose. If
-                it's unspecified, data protection mode will be LIMITED\_DATA\_LOSS by
-                default.
+
+                Note: Redis instances are managed and addressed at regional level so
+                location_id here refers to a GCP region; however, users may choose which
+                specific zone (or collection of zones for cross-zone instances) an
+                instance should be provisioned in. Refer to ``location_id`` and
+                ``alternative_location_id`` fields for more details.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -976,9 +1063,8 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
-                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
+            name (str): The status code, which should be an enum value of
+                ``google.rpc.Code``.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1067,9 +1153,9 @@ class CloudRedisClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            name (str): Required. Redis instance resource name using the form:
-                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
-                where ``location_id`` refers to a GCP region.
+            name (str): The resource has one pattern, but the API owner expects to add more
+                later. (This is the inverse of ORIGINALLY_SINGLE_PATTERN, and prevents
+                that from being necessary once there are multiple patterns.)
             redis_version (str): Required. Specifies the target version of Redis software to upgrade to.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will

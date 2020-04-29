@@ -25,8 +25,7 @@ class FailoverInstanceRequest(object):
         Specifies different modes of operation in relation to the data retention.
 
         Attributes:
-          DATA_PROTECTION_MODE_UNSPECIFIED (int): Defaults to LIMITED\_DATA\_LOSS if a data protection mode is not
-          specified.
+          DATA_PROTECTION_MODE_UNSPECIFIED (int): Response for ``ListInstances``.
           LIMITED_DATA_LOSS (int): Instance failover will be protected with data loss control. More
           specifically, the failover will only be performed if the current
           replication offset diff between master and replica is under a certain
@@ -90,7 +89,10 @@ class Instance(object):
         Attributes:
           TIER_UNSPECIFIED (int): Not set.
           BASIC (int): BASIC tier: standalone instance
-          STANDARD_HA (int): STANDARD\_HA tier: highly available primary/replica instances
+          STANDARD_HA (int): Optional. The full name of the Google Compute Engine
+          `network <https://cloud.google.com/compute/docs/networks-and-firewalls#networks>`__
+          to which the instance is connected. If left unspecified, the ``default``
+          network will be used.
         """
 
         TIER_UNSPECIFIED = 0
