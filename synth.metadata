@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-redis.git",
-        "sha": "b07fe7a2df3c2d8ac24eb55d518afc0b7a1bd8fc"
+        "sha": "fb046731d325132654ce91cb5513870befd7eec4"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "89e89786896d256c70f43e68a975470c4f4f220e",
-        "internalRef": "311239362"
+        "sha": "d8a17933f650cf605196ef14f03edc246f0562b6",
+        "internalRef": "312582296"
       }
     },
     {
