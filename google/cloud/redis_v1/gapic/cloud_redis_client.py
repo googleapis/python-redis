@@ -43,7 +43,7 @@ from google.protobuf import empty_pb2
 from google.protobuf import field_mask_pb2
 
 
-_GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-redis").version
+_GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("google-cloud-redis",).version
 
 
 class CloudRedisClient(object):
@@ -204,12 +204,12 @@ class CloudRedisClient(object):
                 self.transport = transport
         else:
             self.transport = cloud_redis_grpc_transport.CloudRedisGrpcTransport(
-                address=api_endpoint, channel=channel, credentials=credentials
+                address=api_endpoint, channel=channel, credentials=credentials,
             )
 
         if client_info is None:
             client_info = google.api_core.gapic_v1.client_info.ClientInfo(
-                gapic_version=_GAPIC_LIBRARY_VERSION
+                gapic_version=_GAPIC_LIBRARY_VERSION,
             )
         else:
             client_info.gapic_version = _GAPIC_LIBRARY_VERSION
@@ -220,7 +220,7 @@ class CloudRedisClient(object):
         # (Ordinarily, these are the defaults specified in the `*_config.py`
         # file next to this one.)
         self._method_configs = google.api_core.gapic_v1.config.parse_method_configs(
-            client_config["interfaces"][self._INTERFACE_NAME]
+            client_config["interfaces"][self._INTERFACE_NAME],
         )
 
         # Save a dictionary of cached API call functions.
@@ -313,7 +313,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.ListInstancesRequest(
-            parent=parent, page_size=page_size
+            parent=parent, page_size=page_size,
         )
         if metadata is None:
             metadata = []
@@ -396,7 +396,7 @@ class CloudRedisClient(object):
                 client_info=self._client_info,
             )
 
-        request = cloud_redis_pb2.GetInstanceRequest(name=name)
+        request = cloud_redis_pb2.GetInstanceRequest(name=name,)
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -509,7 +509,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.CreateInstanceRequest(
-            parent=parent, instance_id=instance_id, instance=instance
+            parent=parent, instance_id=instance_id, instance=instance,
         )
         if metadata is None:
             metadata = []
@@ -622,7 +622,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.UpdateInstanceRequest(
-            update_mask=update_mask, instance=instance
+            update_mask=update_mask, instance=instance,
         )
         if metadata is None:
             metadata = []
@@ -726,7 +726,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.ImportInstanceRequest(
-            name=name, input_config=input_config
+            name=name, input_config=input_config,
         )
         if metadata is None:
             metadata = []
@@ -828,7 +828,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.ExportInstanceRequest(
-            name=name, output_config=output_config
+            name=name, output_config=output_config,
         )
         if metadata is None:
             metadata = []
@@ -921,7 +921,7 @@ class CloudRedisClient(object):
             )
 
         request = cloud_redis_pb2.FailoverInstanceRequest(
-            name=name, data_protection_mode=data_protection_mode
+            name=name, data_protection_mode=data_protection_mode,
         )
         if metadata is None:
             metadata = []
@@ -1009,7 +1009,7 @@ class CloudRedisClient(object):
                 client_info=self._client_info,
             )
 
-        request = cloud_redis_pb2.DeleteInstanceRequest(name=name)
+        request = cloud_redis_pb2.DeleteInstanceRequest(name=name,)
         if metadata is None:
             metadata = []
         metadata = list(metadata)

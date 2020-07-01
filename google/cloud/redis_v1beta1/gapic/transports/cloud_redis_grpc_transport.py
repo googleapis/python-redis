@@ -54,7 +54,7 @@ class CloudRedisGrpcTransport(object):
         # exception (channels come with credentials baked in already).
         if channel is not None and credentials is not None:
             raise ValueError(
-                "The `channel` and `credentials` arguments are mutually " "exclusive."
+                "The `channel` and `credentials` arguments are mutually " "exclusive.",
             )
 
         # Create the channel.
@@ -72,7 +72,9 @@ class CloudRedisGrpcTransport(object):
 
         # gRPC uses objects called "stubs" that are bound to the
         # channel and provide a basic method for each RPC.
-        self._stubs = {"cloud_redis_stub": cloud_redis_pb2_grpc.CloudRedisStub(channel)}
+        self._stubs = {
+            "cloud_redis_stub": cloud_redis_pb2_grpc.CloudRedisStub(channel),
+        }
 
         # Because this API includes a method that returns a
         # long-running operation (proto: google.longrunning.Operation),
