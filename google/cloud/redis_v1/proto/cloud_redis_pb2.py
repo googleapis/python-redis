@@ -1938,9 +1938,9 @@ Instance = _reflection.GeneratedProtocolMessageType(
           Required. Redis memory size in GiB.
       authorized_network:
           Optional. The full name of the Google Compute Engine `network
-          </compute/docs/networks-and-firewalls#networks>`__ to which
-          the instance is connected. If left unspecified, the
-          ``default`` network will be used.
+          <https://cloud.google.com/vpc/docs/vpc>`__ to which the
+          instance is connected. If left unspecified, the ``default``
+          network will be used.
       persistence_iam_identity:
           Output only. Cloud IAM identity used by import / export
           operations to transfer data to/from Cloud Storage. Format is

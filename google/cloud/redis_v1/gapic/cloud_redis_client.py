@@ -428,7 +428,7 @@ class CloudRedisClient(object):
         size.
 
         By default, the instance is accessible from the project's `default
-        network <https://cloud.google.com/compute/docs/networks-and-firewalls#networks>`__.
+        network <https://cloud.google.com/vpc/docs/vpc>`__.
 
         The creation is executed asynchronously and callers may check the
         returned operation to track its progress. Once the operation is
