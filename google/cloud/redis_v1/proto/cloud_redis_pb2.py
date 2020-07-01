@@ -1860,6 +1860,7 @@ Instance = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _INSTANCE,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """A Google Cloud Redis instance.
+  
   Attributes:
       name:
           Required. Unique name of the resource in this scope including
@@ -1966,6 +1967,7 @@ ListInstancesRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [ListInstances][google.cloud.redis.v1.CloudRedis.ListInstances].
+  
   Attributes:
       parent:
           Required. The resource name of the instance location using the
@@ -1997,6 +1999,7 @@ ListInstancesResponse = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Response for
   [ListInstances][google.cloud.redis.v1.CloudRedis.ListInstances].
+  
   Attributes:
       instances:
           A list of Redis instances in the project in the specified
@@ -2028,6 +2031,7 @@ GetInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [GetInstance][google.cloud.redis.v1.CloudRedis.GetInstance].
+  
   Attributes:
       name:
           Required. Redis instance resource name using the form: ``proje
@@ -2047,6 +2051,7 @@ CreateInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [CreateInstance][google.cloud.redis.v1.CloudRedis.CreateInstance].
+  
   Attributes:
       parent:
           Required. The resource name of the instance location using the
@@ -2075,6 +2080,7 @@ UpdateInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [UpdateInstance][google.cloud.redis.v1.CloudRedis.UpdateInstance].
+  
   Attributes:
       update_mask:
           Required. Mask of fields to update. At least one path must be
@@ -2100,6 +2106,7 @@ DeleteInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [DeleteInstance][google.cloud.redis.v1.CloudRedis.DeleteInstance].
+  
   Attributes:
       name:
           Required. Redis instance resource name using the form: ``proje
@@ -2118,6 +2125,7 @@ GcsSource = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GCSSOURCE,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """The Cloud Storage location for the input content
+  
   Attributes:
       uri:
           Required. Source data URI. (e.g. ‘gs://my_bucket/my_object’).
@@ -2134,6 +2142,7 @@ InputConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _INPUTCONFIG,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """The input content
+  
   Attributes:
       source:
           Required. Specify source location of input data
@@ -2152,6 +2161,7 @@ ImportInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _IMPORTINSTANCEREQUEST,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for [Import][google.cloud.redis.v1.CloudRedis.ImportInstance].
+  
   Attributes:
       name:
           Required. Redis instance resource name using the form: ``proje
@@ -2172,6 +2182,7 @@ GcsDestination = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GCSDESTINATION,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """The Cloud Storage location for the output content
+  
   Attributes:
       uri:
           Required. Data destination URI (e.g.
@@ -2190,6 +2201,7 @@ OutputConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _OUTPUTCONFIG,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """The output content
+  
   Attributes:
       destination:
           Required. Specify destination location of output data
@@ -2208,6 +2220,7 @@ ExportInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _EXPORTINSTANCEREQUEST,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for [Export][google.cloud.redis.v1.CloudRedis.ExportInstance].
+  
   Attributes:
       name:
           Required. Redis instance resource name using the form: ``proje
@@ -2229,6 +2242,7 @@ FailoverInstanceRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Request for
   [Failover][google.cloud.redis.v1.CloudRedis.FailoverInstance].
+  
   Attributes:
       name:
           Required. Redis instance resource name using the form: ``proje
@@ -2251,6 +2265,7 @@ OperationMetadata = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _OPERATIONMETADATA,
         "__module__": "google.cloud.redis_v1.proto.cloud_redis_pb2",
         "__doc__": """Represents the v1 metadata of the long-running operation.
+  
   Attributes:
       create_time:
           Creation timestamp.
@@ -2291,6 +2306,7 @@ LocationMetadata = _reflection.GeneratedProtocolMessageType(
   a given location where a Redis instance may be created. All fields are
   output only. It is returned as content of the
   ``google.cloud.location.Location.metadata`` field.
+  
   Attributes:
       available_zones:
           Output only. The set of available zones in the location. The
