@@ -54,6 +54,11 @@ class CloudRedisStub(object):
             request_serializer=google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.SerializeToString,
             response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
         )
+        self.UpgradeInstance = channel.unary_unary(
+            "/google.cloud.redis.v1.CloudRedis/UpgradeInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.ImportInstance = channel.unary_unary(
             "/google.cloud.redis.v1.CloudRedis/ImportInstance",
             request_serializer=google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.SerializeToString,
@@ -145,6 +150,14 @@ class CloudRedisServicer(object):
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
+    def UpgradeInstance(self, request, context):
+        """Upgrades Redis instance to the newer Redis version specified in the
+        request.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
+
     def ImportInstance(self, request, context):
         """Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
 
@@ -208,6 +221,11 @@ def add_CloudRedisServicer_to_server(servicer, server):
         "UpdateInstance": grpc.unary_unary_rpc_method_handler(
             servicer.UpdateInstance,
             request_deserializer=google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "UpgradeInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.UpgradeInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.FromString,
             response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
         ),
         "ImportInstance": grpc.unary_unary_rpc_method_handler(
@@ -354,6 +372,33 @@ class CloudRedis(object):
             target,
             "/google.cloud.redis.v1.CloudRedis/UpdateInstance",
             google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.SerializeToString,
+            google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
+
+    @staticmethod
+    def UpgradeInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            "/google.cloud.redis.v1.CloudRedis/UpgradeInstance",
+            google_dot_cloud_dot_redis__v1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options,
             channel_credentials,

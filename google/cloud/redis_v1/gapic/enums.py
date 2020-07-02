@@ -46,9 +46,10 @@ class Instance(object):
 
         Attributes:
           CONNECT_MODE_UNSPECIFIED (int): Not set.
-          DIRECT_PEERING (int): Connect via directly peering with memorystore redis hosted service.
-          PRIVATE_SERVICE_ACCESS (int): Connect with google via private service access and share connection
-          across google managed services.
+          DIRECT_PEERING (int): Connect via direct peering to the Memorystore for Redis hosted service.
+          PRIVATE_SERVICE_ACCESS (int): Connect your Memorystore for Redis instance using Private Service
+          Access. Private services access provides an IP address range for multiple
+          Google Cloud services, including Memorystore.
         """
 
         CONNECT_MODE_UNSPECIFIED = 0
