@@ -33,6 +33,7 @@ class FailoverInstanceRequest(object):
           threshold.
           FORCE_DATA_LOSS (int): Instance failover will be performed without data loss control.
         """
+
         DATA_PROTECTION_MODE_UNSPECIFIED = 0
         LIMITED_DATA_LOSS = 1
         FORCE_DATA_LOSS = 2
@@ -49,10 +50,10 @@ class Instance(object):
           PRIVATE_SERVICE_ACCESS (int): Connect with google via private service access and share connection
           across google managed services.
         """
+
         CONNECT_MODE_UNSPECIFIED = 0
         DIRECT_PEERING = 1
         PRIVATE_SERVICE_ACCESS = 2
-
 
     class State(enum.IntEnum):
         """
@@ -71,6 +72,7 @@ class Instance(object):
           IMPORTING (int): Redis instance is importing data (availability may be affected).
           FAILING_OVER (int): Redis instance is failing over (availability may be affected).
         """
+
         STATE_UNSPECIFIED = 0
         CREATING = 1
         READY = 2
@@ -81,7 +83,6 @@ class Instance(object):
         IMPORTING = 8
         FAILING_OVER = 10
 
-
     class Tier(enum.IntEnum):
         """
         Available service tiers to choose from
@@ -91,7 +92,7 @@ class Instance(object):
           BASIC (int): BASIC tier: standalone instance
           STANDARD_HA (int): STANDARD_HA tier: highly available primary/replica instances
         """
+
         TIER_UNSPECIFIED = 0
         BASIC = 1
         STANDARD_HA = 3
-    

@@ -29,14 +29,14 @@ class CloudRedisGrpcTransport(object):
     which can be used to take advantage of advanced
     features of gRPC.
     """
+
     # The scopes needed to make gRPC calls to all of the methods defined
     # in this service.
-    _OAUTH_SCOPES = (
-        'https://www.googleapis.com/auth/cloud-platform',
-    )
+    _OAUTH_SCOPES = ("https://www.googleapis.com/auth/cloud-platform",)
 
-    def __init__(self, channel=None, credentials=None,
-                 address='redis.googleapis.com:443'):
+    def __init__(
+        self, channel=None, credentials=None, address="redis.googleapis.com:443"
+    ):
         """Instantiate the transport class.
 
         Args:
@@ -54,8 +54,7 @@ class CloudRedisGrpcTransport(object):
         # exception (channels come with credentials baked in already).
         if channel is not None and credentials is not None:
             raise ValueError(
-                'The `channel` and `credentials` arguments are mutually '
-                'exclusive.',
+                "The `channel` and `credentials` arguments are mutually " "exclusive.",
             )
 
         # Create the channel.
@@ -64,8 +63,8 @@ class CloudRedisGrpcTransport(object):
                 address=address,
                 credentials=credentials,
                 options={
-                    'grpc.max_send_message_length': -1,
-                    'grpc.max_receive_message_length': -1,
+                    "grpc.max_send_message_length": -1,
+                    "grpc.max_receive_message_length": -1,
                 }.items(),
             )
 
@@ -74,20 +73,20 @@ class CloudRedisGrpcTransport(object):
         # gRPC uses objects called "stubs" that are bound to the
         # channel and provide a basic method for each RPC.
         self._stubs = {
-            'cloud_redis_stub': cloud_redis_pb2_grpc.CloudRedisStub(channel),
+            "cloud_redis_stub": cloud_redis_pb2_grpc.CloudRedisStub(channel),
         }
 
         # Because this API includes a method that returns a
         # long-running operation (proto: google.longrunning.Operation),
         # instantiate an LRO client.
-        self._operations_client = google.api_core.operations_v1.OperationsClient(channel)
+        self._operations_client = google.api_core.operations_v1.OperationsClient(
+            channel
+        )
 
     @classmethod
     def create_channel(
-                cls,
-                address='redis.googleapis.com:443',
-                credentials=None,
-                **kwargs):
+        cls, address="redis.googleapis.com:443", credentials=None, **kwargs
+    ):
         """Create and return a gRPC channel object.
 
         Args:
@@ -104,10 +103,7 @@ class CloudRedisGrpcTransport(object):
             grpc.Channel: A gRPC channel object.
         """
         return google.api_core.grpc_helpers.create_channel(
-            address,
-            credentials=credentials,
-            scopes=cls._OAUTH_SCOPES,
-            **kwargs
+            address, credentials=credentials, scopes=cls._OAUTH_SCOPES, **kwargs
         )
 
     @property
@@ -143,7 +139,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].CreateInstance
+        return self._stubs["cloud_redis_stub"].CreateInstance
 
     @property
     def update_instance(self):
@@ -160,7 +156,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].UpdateInstance
+        return self._stubs["cloud_redis_stub"].UpdateInstance
 
     @property
     def import_instance(self):
@@ -180,7 +176,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].ImportInstance
+        return self._stubs["cloud_redis_stub"].ImportInstance
 
     @property
     def export_instance(self):
@@ -198,7 +194,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].ExportInstance
+        return self._stubs["cloud_redis_stub"].ExportInstance
 
     @property
     def failover_instance(self):
@@ -212,7 +208,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].FailoverInstance
+        return self._stubs["cloud_redis_stub"].FailoverInstance
 
     @property
     def delete_instance(self):
@@ -226,7 +222,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].DeleteInstance
+        return self._stubs["cloud_redis_stub"].DeleteInstance
 
     @property
     def list_instances(self):
@@ -247,7 +243,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].ListInstances
+        return self._stubs["cloud_redis_stub"].ListInstances
 
     @property
     def get_instance(self):
@@ -260,7 +256,7 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].GetInstance
+        return self._stubs["cloud_redis_stub"].GetInstance
 
     @property
     def upgrade_instance(self):
@@ -274,4 +270,4 @@ class CloudRedisGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['cloud_redis_stub'].UpgradeInstance
+        return self._stubs["cloud_redis_stub"].UpgradeInstance

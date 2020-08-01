@@ -2,8 +2,12 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from google.cloud.redis_v1beta1.proto import cloud_redis_pb2 as google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2
-from google.longrunning import operations_pb2 as google_dot_longrunning_dot_operations__pb2
+from google.cloud.redis_v1beta1.proto import (
+    cloud_redis_pb2 as google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2,
+)
+from google.longrunning import (
+    operations_pb2 as google_dot_longrunning_dot_operations__pb2,
+)
 
 
 class CloudRedisStub(object):
@@ -31,50 +35,50 @@ class CloudRedisStub(object):
             channel: A grpc.Channel.
         """
         self.ListInstances = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/ListInstances',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesRequest.SerializeToString,
-                response_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesResponse.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/ListInstances",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesRequest.SerializeToString,
+            response_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesResponse.FromString,
+        )
         self.GetInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/GetInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.GetInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.Instance.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/GetInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.GetInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.Instance.FromString,
+        )
         self.CreateInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/CreateInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.CreateInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/CreateInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.CreateInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.UpdateInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/UpdateInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/UpdateInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.UpgradeInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/UpgradeInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/UpgradeInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.ImportInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/ImportInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/ImportInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.ExportInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/ExportInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ExportInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/ExportInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ExportInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.FailoverInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/FailoverInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.FailoverInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/FailoverInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.FailoverInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
         self.DeleteInstance = channel.unary_unary(
-                '/google.cloud.redis.v1beta1.CloudRedis/DeleteInstance',
-                request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.DeleteInstanceRequest.SerializeToString,
-                response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
+            "/google.cloud.redis.v1beta1.CloudRedis/DeleteInstance",
+            request_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.DeleteInstanceRequest.SerializeToString,
+            response_deserializer=google_dot_longrunning_dot_operations__pb2.Operation.FromString,
+        )
 
 
 class CloudRedisServicer(object):
@@ -107,15 +111,15 @@ class CloudRedisServicer(object):
         available to the project are queried, and the results are aggregated.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetInstance(self, request, context):
         """Gets the details of a specific Redis instance.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateInstance(self, request, context):
         """Creates a Redis instance based on the specified tier and memory size.
@@ -132,8 +136,8 @@ class CloudRedisServicer(object):
         is no need to call DeleteOperation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpdateInstance(self, request, context):
         """Updates the metadata and configuration of a specific Redis instance.
@@ -143,16 +147,16 @@ class CloudRedisServicer(object):
         after a few hours, so there is no need to call DeleteOperation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpgradeInstance(self, request, context):
         """Upgrades Redis instance to the newer Redis version specified in the
         request.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ImportInstance(self, request, context):
         """Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
@@ -165,8 +169,8 @@ class CloudRedisServicer(object):
         there is no need to call DeleteOperation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ExportInstance(self, request, context):
         """Export Redis instance data into a Redis RDB format file in Cloud Storage.
@@ -177,80 +181,81 @@ class CloudRedisServicer(object):
         there is no need to call DeleteOperation.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def FailoverInstance(self, request, context):
         """Initiates a failover of the master node to current replica node for a
         specific STANDARD tier Cloud Memorystore for Redis instance.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteInstance(self, request, context):
         """Deletes a specific Redis instance.  Instance stops serving and data is
         deleted.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_CloudRedisServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ListInstances': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListInstances,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesRequest.FromString,
-                    response_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesResponse.SerializeToString,
-            ),
-            'GetInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.GetInstanceRequest.FromString,
-                    response_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.Instance.SerializeToString,
-            ),
-            'CreateInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.CreateInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'UpdateInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'UpgradeInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpgradeInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'ImportInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.ImportInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'ExportInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.ExportInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ExportInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'FailoverInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.FailoverInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.FailoverInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'DeleteInstance': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteInstance,
-                    request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.DeleteInstanceRequest.FromString,
-                    response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
+        "ListInstances": grpc.unary_unary_rpc_method_handler(
+            servicer.ListInstances,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesRequest.FromString,
+            response_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesResponse.SerializeToString,
+        ),
+        "GetInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.GetInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.GetInstanceRequest.FromString,
+            response_serializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.Instance.SerializeToString,
+        ),
+        "CreateInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.CreateInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "UpdateInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "UpgradeInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.UpgradeInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "ImportInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.ImportInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "ExportInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.ExportInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ExportInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "FailoverInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.FailoverInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.FailoverInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
+        "DeleteInstance": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteInstance,
+            request_deserializer=google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.DeleteInstanceRequest.FromString,
+            response_serializer=google_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'google.cloud.redis.v1beta1.CloudRedis', rpc_method_handlers)
+        "google.cloud.redis.v1beta1.CloudRedis", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class CloudRedis(object):
     """Configures and manages Cloud Memorystore for Redis instances
 
@@ -270,145 +275,244 @@ class CloudRedis(object):
     """
 
     @staticmethod
-    def ListInstances(request,
+    def ListInstances(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/ListInstances',
+            "/google.cloud.redis.v1beta1.CloudRedis/ListInstances",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesRequest.SerializeToString,
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ListInstancesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetInstance(request,
+    def GetInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/GetInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/GetInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.GetInstanceRequest.SerializeToString,
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.Instance.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateInstance(request,
+    def CreateInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/CreateInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/CreateInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.CreateInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpdateInstance(request,
+    def UpdateInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/UpdateInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/UpdateInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpdateInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpgradeInstance(request,
+    def UpgradeInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/UpgradeInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/UpgradeInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.UpgradeInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ImportInstance(request,
+    def ImportInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/ImportInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/ImportInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ImportInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ExportInstance(request,
+    def ExportInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/ExportInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/ExportInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.ExportInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def FailoverInstance(request,
+    def FailoverInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/FailoverInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/FailoverInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.FailoverInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteInstance(request,
+    def DeleteInstance(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/google.cloud.redis.v1beta1.CloudRedis/DeleteInstance',
+            "/google.cloud.redis.v1beta1.CloudRedis/DeleteInstance",
             google_dot_cloud_dot_redis__v1beta1_dot_proto_dot_cloud__redis__pb2.DeleteInstanceRequest.SerializeToString,
             google_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
