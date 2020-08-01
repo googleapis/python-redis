@@ -23,7 +23,7 @@ from google.cloud.redis_v1 import types
 
 
 __all__ = (
-    "enums",
-    "types",
-    "CloudRedisClient",
+    'enums',
+    'types',
+    'CloudRedisClient',
 )
