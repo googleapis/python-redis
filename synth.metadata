@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-redis.git",
-        "sha": "66eecbbddf3ed0c6faaee6c778d561c0ba6e53e2"
+        "sha": "add073580f4734289adc03abe8a44657c8686951"
       }
     },
     {
@@ -19,7 +19,7 @@
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "fdd03c161003ab97657cc0218f25c82c89ddf4b6"
+        "sha": "257fda18168bedb76985024bd198ed1725485488"
       }
     }
   ],
