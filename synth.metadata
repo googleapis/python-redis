@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "01e6372de3467fbb9552ac768827cc92b4e7655c",
-        "internalRef": "339325081"
+        "sha": "ff291040cf25a594334a2c87f7b4b98945056305",
+        "internalRef": "341251725"
       }
     },
     {
@@ -131,7 +131,6 @@
     "google/cloud/redis_v1beta1/types/cloud_redis.py",
     "mypy.ini",
     "noxfile.py",
-    "redis-v1beta1-py.tar.gz",
     "renovate.json",
     "samples/AUTHORING_GUIDE.md",
     "samples/CONTRIBUTING.md",
