@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-redis.git",
-        "sha": "add073580f4734289adc03abe8a44657c8686951"
+        "sha": "639345127d342927a0db213396da7b4a82a235f5"
       }
     },
     {
@@ -133,6 +133,7 @@
     "google/cloud/redis_v1beta1/types/cloud_redis.py",
     "mypy.ini",
     "noxfile.py",
+    "redis-v1-py.tar.gz",
     "renovate.json",
     "samples/AUTHORING_GUIDE.md",
     "samples/CONTRIBUTING.md",
