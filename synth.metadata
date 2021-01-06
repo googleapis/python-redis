@@ -133,7 +133,6 @@
     "google/cloud/redis_v1beta1/types/cloud_redis.py",
     "mypy.ini",
     "noxfile.py",
-    "redis-v1-py.tar.gz",
     "renovate.json",
     "samples/AUTHORING_GUIDE.md",
     "samples/CONTRIBUTING.md",
