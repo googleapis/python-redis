@@ -4,6 +4,41 @@
 
 [1]: https://pypi.org/project/google-cloud-redis/#history
 
+## [2.1.0](https://www.github.com/googleapis/python-redis/compare/v2.0.0...v2.1.0) (2021-01-29)
+
+
+### Features
+
+* add common resource helpers; expose client transport; remove send/recv gRPC limits ([#38](https://www.github.com/googleapis/python-redis/issues/38)) ([f3f1a86](https://www.github.com/googleapis/python-redis/commit/f3f1a86a2f14ceeaf22362387b397d9b3f880684))
+
+## [2.0.0](https://www.github.com/googleapis/python-redis/compare/v1.0.0...v2.0.0) (2020-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to microgen (#30)
+
+### Features
+
+* migrate to microgen ([#30](https://www.github.com/googleapis/python-redis/issues/30)) ([a17c1a8](https://www.github.com/googleapis/python-redis/commit/a17c1a840e10ccde25df8d4305b48997e37acd51))
+
+
+### Bug Fixes
+
+* update retry config ([#24](https://www.github.com/googleapis/python-redis/issues/24)) ([0b3f2c0](https://www.github.com/googleapis/python-redis/commit/0b3f2c075728a6ec4d5d503d010de229ed1ef725))
+
+
+### Documentation
+
+* add multiprocessing note (via synth) ([#17](https://www.github.com/googleapis/python-redis/issues/17)) ([fb04673](https://www.github.com/googleapis/python-redis/commit/fb046731d325132654ce91cb5513870befd7eec4))
+
+## [1.0.0](https://www.github.com/googleapis/python-redis/compare/v0.4.0...v1.0.0) (2020-05-12)
+
+
+### Features
+
+* set release_status to production/stable ([#11](https://www.github.com/googleapis/python-redis/issues/11)) ([effc368](https://www.github.com/googleapis/python-redis/commit/effc368f6904cb6321ec9a8100460a0df36132ab))
+
 ## [0.4.0](https://www.github.com/googleapis/python-redis/compare/v0.3.0...v0.4.0) (2020-02-12)
 
 
