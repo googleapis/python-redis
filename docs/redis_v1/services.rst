@@ -1,6 +1,6 @@
 Services for Google Cloud Redis v1 API
 ======================================
-.. toctree::
-    :maxdepth: 2
 
-    cloud_redis
+.. automodule:: google.cloud.redis_v1.services.cloud_redis
+    :members:
+    :inherited-members:
