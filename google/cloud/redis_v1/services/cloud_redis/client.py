@@ -15,7 +15,6 @@
 # limitations under the License.
 #
 
-import builtins
 from collections import OrderedDict
 from distutils import util
 import os
@@ -407,7 +406,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([parent])
+        has_flattened_params = any([parent])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -485,7 +484,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name])
+        has_flattened_params = any([name])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -596,7 +595,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([parent, instance_id, instance])
+        has_flattened_params = any([parent, instance_id, instance])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -703,7 +702,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([update_mask, instance])
+        has_flattened_params = any([update_mask, instance])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -800,7 +799,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name, redis_version])
+        has_flattened_params = any([name, redis_version])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -902,7 +901,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name, input_config])
+        has_flattened_params = any([name, input_config])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -1000,7 +999,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name, output_config])
+        has_flattened_params = any([name, output_config])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -1097,7 +1096,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name, data_protection_mode])
+        has_flattened_params = any([name, data_protection_mode])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -1197,7 +1196,7 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = builtins.any([name])
+        has_flattened_params = any([name])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
