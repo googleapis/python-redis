@@ -24,7 +24,7 @@ class ListInstancesPager:
     """A pager for iterating through ``list_instances`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.redis_v1beta1.types.ListInstancesResponse` object, and
+    :class:`~.cloud_redis.ListInstancesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``instances`` field.
 
@@ -33,7 +33,7 @@ class ListInstancesPager:
     through the ``instances`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.redis_v1beta1.types.ListInstancesResponse`
+    All the usual :class:`~.cloud_redis.ListInstancesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -51,9 +51,9 @@ class ListInstancesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.redis_v1beta1.types.ListInstancesRequest):
+            request (:class:`~.cloud_redis.ListInstancesRequest`):
                 The initial request object.
-            response (google.cloud.redis_v1beta1.types.ListInstancesResponse):
+            response (:class:`~.cloud_redis.ListInstancesResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -86,7 +86,7 @@ class ListInstancesAsyncPager:
     """A pager for iterating through ``list_instances`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.redis_v1beta1.types.ListInstancesResponse` object, and
+    :class:`~.cloud_redis.ListInstancesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``instances`` field.
 
@@ -95,7 +95,7 @@ class ListInstancesAsyncPager:
     through the ``instances`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.redis_v1beta1.types.ListInstancesResponse`
+    All the usual :class:`~.cloud_redis.ListInstancesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -113,9 +113,9 @@ class ListInstancesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.redis_v1beta1.types.ListInstancesRequest):
+            request (:class:`~.cloud_redis.ListInstancesRequest`):
                 The initial request object.
-            response (google.cloud.redis_v1beta1.types.ListInstancesResponse):
+            response (:class:`~.cloud_redis.ListInstancesResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
