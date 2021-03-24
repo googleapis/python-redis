@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-redis.git",
-        "sha": "add073580f4734289adc03abe8a44657c8686951"
+        "sha": "bbdf4f054c28fcee45c90e286ba6e5d339ff7a17"
       }
     },
     {
