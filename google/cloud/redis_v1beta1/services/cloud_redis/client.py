@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 from distutils import util
 import os
@@ -40,7 +38,6 @@ from google.protobuf import any_pb2 as gp_any  # type: ignore
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
 from .transports.base import CloudRedisTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import CloudRedisGrpcTransport
 from .transports.grpc_asyncio import CloudRedisGrpcAsyncIOTransport
@@ -401,7 +398,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -433,10 +429,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.ListInstancesRequest):
             request = cloud_redis.ListInstancesRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
 
@@ -485,7 +479,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -512,10 +505,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.GetInstanceRequest):
             request = cloud_redis.GetInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -593,7 +584,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -625,10 +615,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.CreateInstanceRequest):
             request = cloud_redis.CreateInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
             if instance_id is not None:
@@ -702,7 +690,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -734,10 +721,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.UpdateInstanceRequest):
             request = cloud_redis.UpdateInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if update_mask is not None:
                 request.update_mask = update_mask
             if instance is not None:
@@ -801,7 +786,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``redis_version`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -833,10 +817,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.UpgradeInstanceRequest):
             request = cloud_redis.UpgradeInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
             if redis_version is not None:
@@ -905,7 +887,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``input_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -937,10 +918,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.ImportInstanceRequest):
             request = cloud_redis.ImportInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
             if input_config is not None:
@@ -1005,7 +984,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``output_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1037,10 +1015,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.ExportInstanceRequest):
             request = cloud_redis.ExportInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
             if output_config is not None:
@@ -1104,7 +1080,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``data_protection_mode`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1136,10 +1111,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.FailoverInstanceRequest):
             request = cloud_redis.FailoverInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
             if data_protection_mode is not None:
@@ -1193,7 +1166,6 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1235,10 +1207,8 @@ class CloudRedisClient(metaclass=CloudRedisClientMeta):
         # there are no flattened fields.
         if not isinstance(request, cloud_redis.DeleteInstanceRequest):
             request = cloud_redis.DeleteInstanceRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -35,7 +33,6 @@ from google.cloud.redis_v1.types import cloud_redis
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
 from .transports.base import CloudRedisTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import CloudRedisGrpcAsyncIOTransport
 from .client import CloudRedisClient
@@ -72,25 +69,20 @@ class CloudRedisAsyncClient:
 
     instance_path = staticmethod(CloudRedisClient.instance_path)
     parse_instance_path = staticmethod(CloudRedisClient.parse_instance_path)
-
     common_billing_account_path = staticmethod(
         CloudRedisClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         CloudRedisClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(CloudRedisClient.common_folder_path)
     parse_common_folder_path = staticmethod(CloudRedisClient.parse_common_folder_path)
-
     common_organization_path = staticmethod(CloudRedisClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         CloudRedisClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(CloudRedisClient.common_project_path)
     parse_common_project_path = staticmethod(CloudRedisClient.parse_common_project_path)
-
     common_location_path = staticmethod(CloudRedisClient.common_location_path)
     parse_common_location_path = staticmethod(
         CloudRedisClient.parse_common_location_path
@@ -181,7 +173,6 @@ class CloudRedisAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = CloudRedisClient(
             credentials=credentials,
             transport=transport,
@@ -222,7 +213,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -252,7 +242,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -305,7 +294,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -330,7 +318,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -412,7 +399,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -442,7 +428,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if instance_id is not None:
@@ -520,7 +505,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -550,7 +534,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if update_mask is not None:
             request.update_mask = update_mask
         if instance is not None:
@@ -618,7 +601,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``redis_version`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -648,7 +630,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if redis_version is not None:
@@ -721,7 +702,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``input_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -751,7 +731,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if input_config is not None:
@@ -820,7 +799,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``output_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -850,7 +828,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if output_config is not None:
@@ -918,7 +895,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``data_protection_mode`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -948,7 +924,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if data_protection_mode is not None:
@@ -1006,7 +981,6 @@ class CloudRedisAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1046,7 +1020,6 @@ class CloudRedisAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
