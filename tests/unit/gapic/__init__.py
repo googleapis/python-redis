@@ -13,21 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from collections import OrderedDict
-from typing import Dict, Type
-
-from .base import CloudRedisTransport
-from .grpc import CloudRedisGrpcTransport
-from .grpc_asyncio import CloudRedisGrpcAsyncIOTransport
-
-
-# Compile a registry of transports.
-_transport_registry = OrderedDict()  # type: Dict[str, Type[CloudRedisTransport]]
-_transport_registry['grpc'] = CloudRedisGrpcTransport
-_transport_registry['grpc_asyncio'] = CloudRedisGrpcAsyncIOTransport
-
-__all__ = (
-    'CloudRedisTransport',
-    'CloudRedisGrpcTransport',
-    'CloudRedisGrpcAsyncIOTransport',
-)
