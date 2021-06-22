@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-redis/#history
 
+### [2.1.2](https://www.github.com/googleapis/python-redis/compare/v2.1.1...v2.1.2) (2021-06-22)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-redis/issues/1127)) ([#83](https://www.github.com/googleapis/python-redis/issues/83)) ([3a64290](https://www.github.com/googleapis/python-redis/commit/3a642900cb9b0ab6fc2dd143c1ccac6a34b30209))
+
 ### [2.1.1](https://www.github.com/googleapis/python-redis/compare/v2.1.0...v2.1.1) (2021-05-28)
 
 
