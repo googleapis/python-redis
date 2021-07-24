@@ -4,6 +4,18 @@
 
 [1]: https://pypi.org/project/google-cloud-redis/#history
 
+## [2.3.0](https://www.github.com/googleapis/python-redis/compare/v2.2.1...v2.3.0) (2021-07-24)
+
+
+### Features
+
+* add Samples section to CONTRIBUTING.rst ([#98](https://www.github.com/googleapis/python-redis/issues/98)) ([923f6dc](https://www.github.com/googleapis/python-redis/commit/923f6dc6497f826f80d11a4a35e5cd26b5755eac))
+
+
+### Bug Fixes
+
+* enable self signed jwt for grpc ([#102](https://www.github.com/googleapis/python-redis/issues/102)) ([dd8b006](https://www.github.com/googleapis/python-redis/commit/dd8b0069075ee4aea18efef67f36ce045345684a))
+
 ### [2.2.1](https://www.github.com/googleapis/python-redis/compare/v2.2.0...v2.2.1) (2021-07-20)
 
 
