@@ -43,6 +43,12 @@ s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .
 
 python.py_samples(skip_readmes=True)
 
+s.replace(
+    "google/cloud/redis_v1*/services/*",
+    "failover of the master node to current",
+    "failover of the main node to current",
+)
+
 # Remove the replacements below once
 # https://github.com/googleapis/synthtool/pull/1188 is merged
 
