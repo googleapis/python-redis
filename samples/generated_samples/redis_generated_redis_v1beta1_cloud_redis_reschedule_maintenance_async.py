@@ -43,6 +43,8 @@ async def sample_reschedule_maintenance():
     print("Waiting for operation to complete...")
 
     response = await operation.result()
+
+    # Handle the response
     print(response)
 
 # [END redis_generated_redis_v1beta1_CloudRedis_RescheduleMaintenance_async]

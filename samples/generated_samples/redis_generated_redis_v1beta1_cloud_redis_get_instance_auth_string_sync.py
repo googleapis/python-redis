@@ -39,7 +39,7 @@ def sample_get_instance_auth_string():
     # Make the request
     response = client.get_instance_auth_string(request=request)
 
-    # Handle response
+    # Handle the response
     print(response)
 
 # [END redis_generated_redis_v1beta1_CloudRedis_GetInstanceAuthString_sync]
