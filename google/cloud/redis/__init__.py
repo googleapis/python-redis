@@ -34,12 +34,16 @@ from google.cloud.redis_v1.types.cloud_redis import InstanceAuthString
 from google.cloud.redis_v1.types.cloud_redis import ListInstancesRequest
 from google.cloud.redis_v1.types.cloud_redis import ListInstancesResponse
 from google.cloud.redis_v1.types.cloud_redis import LocationMetadata
+from google.cloud.redis_v1.types.cloud_redis import MaintenancePolicy
+from google.cloud.redis_v1.types.cloud_redis import MaintenanceSchedule
 from google.cloud.redis_v1.types.cloud_redis import NodeInfo
 from google.cloud.redis_v1.types.cloud_redis import OperationMetadata
 from google.cloud.redis_v1.types.cloud_redis import OutputConfig
+from google.cloud.redis_v1.types.cloud_redis import RescheduleMaintenanceRequest
 from google.cloud.redis_v1.types.cloud_redis import TlsCertificate
 from google.cloud.redis_v1.types.cloud_redis import UpdateInstanceRequest
 from google.cloud.redis_v1.types.cloud_redis import UpgradeInstanceRequest
+from google.cloud.redis_v1.types.cloud_redis import WeeklyMaintenanceWindow
 from google.cloud.redis_v1.types.cloud_redis import ZoneMetadata
 
 __all__ = (
@@ -60,11 +64,15 @@ __all__ = (
     "ListInstancesRequest",
     "ListInstancesResponse",
     "LocationMetadata",
+    "MaintenancePolicy",
+    "MaintenanceSchedule",
     "NodeInfo",
     "OperationMetadata",
     "OutputConfig",
+    "RescheduleMaintenanceRequest",
     "TlsCertificate",
     "UpdateInstanceRequest",
     "UpgradeInstanceRequest",
+    "WeeklyMaintenanceWindow",
     "ZoneMetadata",
 )

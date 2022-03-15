@@ -575,6 +575,33 @@ class CloudRedisGrpcTransport(CloudRedisTransport):
             )
         return self._stubs["delete_instance"]
 
+    @property
+    def reschedule_maintenance(
+        self,
+    ) -> Callable[[cloud_redis.RescheduleMaintenanceRequest], operations_pb2.Operation]:
+        r"""Return a callable for the reschedule maintenance method over gRPC.
+
+        Reschedule maintenance for a given instance in a
+        given project and location.
+
+        Returns:
+            Callable[[~.RescheduleMaintenanceRequest],
+                    ~.Operation]:
+                A function that, when called, will call the underlying RPC
+                on the server.
+        """
+        # Generate a "stub function" on-the-fly which will actually make
+        # the request.
+        # gRPC handles serialization and deserialization, so we just need
+        # to pass in the functions for each.
+        if "reschedule_maintenance" not in self._stubs:
+            self._stubs["reschedule_maintenance"] = self.grpc_channel.unary_unary(
+                "/google.cloud.redis.v1.CloudRedis/RescheduleMaintenance",
+                request_serializer=cloud_redis.RescheduleMaintenanceRequest.serialize,
+                response_deserializer=operations_pb2.Operation.FromString,
+            )
+        return self._stubs["reschedule_maintenance"]
+
     def close(self):
         self.grpc_channel.close()
 

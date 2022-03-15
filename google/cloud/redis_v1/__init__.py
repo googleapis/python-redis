@@ -32,12 +32,16 @@ from .types.cloud_redis import InstanceAuthString
 from .types.cloud_redis import ListInstancesRequest
 from .types.cloud_redis import ListInstancesResponse
 from .types.cloud_redis import LocationMetadata
+from .types.cloud_redis import MaintenancePolicy
+from .types.cloud_redis import MaintenanceSchedule
 from .types.cloud_redis import NodeInfo
 from .types.cloud_redis import OperationMetadata
 from .types.cloud_redis import OutputConfig
+from .types.cloud_redis import RescheduleMaintenanceRequest
 from .types.cloud_redis import TlsCertificate
 from .types.cloud_redis import UpdateInstanceRequest
 from .types.cloud_redis import UpgradeInstanceRequest
+from .types.cloud_redis import WeeklyMaintenanceWindow
 from .types.cloud_redis import ZoneMetadata
 
 __all__ = (
@@ -58,11 +62,15 @@ __all__ = (
     "ListInstancesRequest",
     "ListInstancesResponse",
     "LocationMetadata",
+    "MaintenancePolicy",
+    "MaintenanceSchedule",
     "NodeInfo",
     "OperationMetadata",
     "OutputConfig",
+    "RescheduleMaintenanceRequest",
     "TlsCertificate",
     "UpdateInstanceRequest",
     "UpgradeInstanceRequest",
+    "WeeklyMaintenanceWindow",
     "ZoneMetadata",
 )

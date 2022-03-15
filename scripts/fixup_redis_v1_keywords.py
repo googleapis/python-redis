@@ -47,6 +47,7 @@ class redisCallTransformer(cst.CSTTransformer):
         'get_instance_auth_string': ('name', ),
         'import_instance': ('name', 'input_config', ),
         'list_instances': ('parent', 'page_size', 'page_token', ),
+        'reschedule_maintenance': ('name', 'reschedule_type', 'schedule_time', ),
         'update_instance': ('update_mask', 'instance', ),
         'upgrade_instance': ('name', 'redis_version', ),
     }

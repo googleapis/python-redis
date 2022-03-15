@@ -1416,6 +1416,136 @@ class CloudRedisAsyncClient:
         # Done; return the response.
         return response
 
+    async def reschedule_maintenance(
+        self,
+        request: Union[cloud_redis.RescheduleMaintenanceRequest, dict] = None,
+        *,
+        name: str = None,
+        reschedule_type: cloud_redis.RescheduleMaintenanceRequest.RescheduleType = None,
+        schedule_time: timestamp_pb2.Timestamp = None,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
+        timeout: float = None,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> operation_async.AsyncOperation:
+        r"""Reschedule maintenance for a given instance in a
+        given project and location.
+
+
+        .. code-block:: python
+
+            from google.cloud import redis_v1
+
+            def sample_reschedule_maintenance():
+                # Create a client
+                client = redis_v1.CloudRedisClient()
+
+                # Initialize request argument(s)
+                request = redis_v1.RescheduleMaintenanceRequest(
+                    name="name_value",
+                    reschedule_type="SPECIFIC_TIME",
+                )
+
+                # Make the request
+                operation = client.reschedule_maintenance(request=request)
+
+                print("Waiting for operation to complete...")
+
+                response = operation.result()
+
+                # Handle the response
+                print(response)
+
+        Args:
+            request (Union[google.cloud.redis_v1.types.RescheduleMaintenanceRequest, dict]):
+                The request object. Request for
+                [RescheduleMaintenance][google.cloud.redis.v1.CloudRedis.RescheduleMaintenance].
+            name (:class:`str`):
+                Required. Redis instance resource name using the form:
+                ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
+                where ``location_id`` refers to a GCP region.
+
+                This corresponds to the ``name`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            reschedule_type (:class:`google.cloud.redis_v1.types.RescheduleMaintenanceRequest.RescheduleType`):
+                Required. If reschedule type is SPECIFIC_TIME, must set
+                up schedule_time as well.
+
+                This corresponds to the ``reschedule_type`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            schedule_time (:class:`google.protobuf.timestamp_pb2.Timestamp`):
+                Optional. Timestamp when the maintenance shall be
+                rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC
+                3339 format, for example ``2012-11-15T16:19:00.094Z``.
+
+                This corresponds to the ``schedule_time`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.api_core.operation_async.AsyncOperation:
+                An object representing a long-running operation.
+
+                The result type for the operation will be
+                :class:`google.cloud.redis_v1.types.Instance` A
+                Memorystore for Redis instance.
+
+        """
+        # Create or coerce a protobuf request object.
+        # Quick check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([name, reschedule_type, schedule_time])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        request = cloud_redis.RescheduleMaintenanceRequest(request)
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+        if name is not None:
+            request.name = name
+        if reschedule_type is not None:
+            request.reschedule_type = reschedule_type
+        if schedule_time is not None:
+            request.schedule_time = schedule_time
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = gapic_v1.method_async.wrap_method(
+            self._client._transport.reschedule_maintenance,
+            default_timeout=600.0,
+            client_info=DEFAULT_CLIENT_INFO,
+        )
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+
+        # Wrap the response in an operation future.
+        response = operation_async.from_gapic(
+            response,
+            self._client._transport.operations_client,
+            cloud_redis.Instance,
+            metadata_type=cloud_redis.OperationMetadata,
+        )
+
+        # Done; return the response.
+        return response
+
     async def __aenter__(self):
         return self
 

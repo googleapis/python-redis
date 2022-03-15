@@ -152,6 +152,11 @@ class CloudRedisTransport(abc.ABC):
             self.delete_instance: gapic_v1.method.wrap_method(
                 self.delete_instance, default_timeout=600.0, client_info=client_info,
             ),
+            self.reschedule_maintenance: gapic_v1.method.wrap_method(
+                self.reschedule_maintenance,
+                default_timeout=600.0,
+                client_info=client_info,
+            ),
         }
 
     def close(self):
@@ -259,6 +264,15 @@ class CloudRedisTransport(abc.ABC):
         self,
     ) -> Callable[
         [cloud_redis.DeleteInstanceRequest],
+        Union[operations_pb2.Operation, Awaitable[operations_pb2.Operation]],
+    ]:
+        raise NotImplementedError()
+
+    @property
+    def reschedule_maintenance(
+        self,
+    ) -> Callable[
+        [cloud_redis.RescheduleMaintenanceRequest],
         Union[operations_pb2.Operation, Awaitable[operations_pb2.Operation]],
     ]:
         raise NotImplementedError()
