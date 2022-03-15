@@ -27,6 +27,8 @@ __protobuf__ = proto.module(
         "ListInstancesRequest",
         "ListInstancesResponse",
         "GetInstanceRequest",
+        "GetInstanceAuthStringRequest",
+        "InstanceAuthString",
         "CreateInstanceRequest",
         "UpdateInstanceRequest",
         "UpgradeInstanceRequest",
@@ -41,6 +43,7 @@ __protobuf__ = proto.module(
         "OperationMetadata",
         "LocationMetadata",
         "ZoneMetadata",
+        "TlsCertificate",
     },
 )
 
@@ -61,7 +64,7 @@ class NodeInfo(proto.Message):
 
 
 class Instance(proto.Message):
-    r"""A Google Cloud Redis instance.
+    r"""A Memorystore for Redis instance.
 
     Attributes:
         name (str):
@@ -119,6 +122,13 @@ class Instance(proto.Message):
             provided, the service will choose an unused /29 block, for
             example, 10.0.0.0/29 or 192.168.0.0/29. For
             READ_REPLICAS_ENABLED the default block size is /28.
+        secondary_ip_range (str):
+            Optional. Additional IP range for node placement. Required
+            when enabling read replicas on an existing instance. For
+            DIRECT_PEERING mode value must be a CIDR range of size /28,
+            or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the
+            name of an allocated address range associated with the
+            private service access connection, or "auto".
         host (str):
             Output only. Hostname or IP address of the
             exposed Redis endpoint used by clients to
@@ -179,10 +189,25 @@ class Instance(proto.Message):
         connect_mode (google.cloud.redis_v1.types.Instance.ConnectMode):
             Optional. The network connect mode of the Redis instance. If
             not provided, the connect mode defaults to DIRECT_PEERING.
+        auth_enabled (bool):
+            Optional. Indicates whether OSS Redis AUTH is
+            enabled for the instance. If set to "true" AUTH
+            is enabled on the instance. Default value is
+            "false" meaning AUTH is disabled.
+        server_ca_certs (Sequence[google.cloud.redis_v1.types.TlsCertificate]):
+            Output only. List of server CA certificates
+            for the instance.
+        transit_encryption_mode (google.cloud.redis_v1.types.Instance.TransitEncryptionMode):
+            Optional. The TLS mode of the Redis instance.
+            If not provided, TLS is disabled for the
+            instance.
         replica_count (int):
-            Optional. The number of replica nodes. Valid range for
-            standard tier is [1-5] and defaults to 1. Valid value for
-            basic tier is 0 and defaults to 0.
+            Optional. The number of replica nodes. The valid range for
+            the Standard Tier with read replicas enabled is [1-5] and
+            defaults to 2. If read replicas are not enabled for a
+            Standard Tier instance, the only valid value is 1 and the
+            default is 1. The valid value for basic tier is 0 and the
+            default is also 0.
         nodes (Sequence[google.cloud.redis_v1.types.NodeInfo]):
             Output only. Info per node.
         read_endpoint (str):
@@ -197,7 +222,8 @@ class Instance(proto.Message):
             readonly redis endpoint. Standard tier only.
             Write requests should target 'port'.
         read_replicas_mode (google.cloud.redis_v1.types.Instance.ReadReplicasMode):
-            Optional. Read replica mode.
+            Optional. Read replicas mode for the instance. Defaults to
+            READ_REPLICAS_DISABLED.
     """
 
     class State(proto.Enum):
@@ -224,6 +250,12 @@ class Instance(proto.Message):
         DIRECT_PEERING = 1
         PRIVATE_SERVICE_ACCESS = 2
 
+    class TransitEncryptionMode(proto.Enum):
+        r"""Available TLS modes."""
+        TRANSIT_ENCRYPTION_MODE_UNSPECIFIED = 0
+        SERVER_AUTHENTICATION = 1
+        DISABLED = 2
+
     class ReadReplicasMode(proto.Enum):
         r"""Read replicas mode."""
         READ_REPLICAS_MODE_UNSPECIFIED = 0
@@ -237,6 +269,7 @@ class Instance(proto.Message):
     alternative_location_id = proto.Field(proto.STRING, number=5,)
     redis_version = proto.Field(proto.STRING, number=7,)
     reserved_ip_range = proto.Field(proto.STRING, number=9,)
+    secondary_ip_range = proto.Field(proto.STRING, number=30,)
     host = proto.Field(proto.STRING, number=10,)
     port = proto.Field(proto.INT32, number=11,)
     current_location_id = proto.Field(proto.STRING, number=12,)
@@ -251,6 +284,13 @@ class Instance(proto.Message):
     authorized_network = proto.Field(proto.STRING, number=20,)
     persistence_iam_identity = proto.Field(proto.STRING, number=21,)
     connect_mode = proto.Field(proto.ENUM, number=22, enum=ConnectMode,)
+    auth_enabled = proto.Field(proto.BOOL, number=23,)
+    server_ca_certs = proto.RepeatedField(
+        proto.MESSAGE, number=25, message="TlsCertificate",
+    )
+    transit_encryption_mode = proto.Field(
+        proto.ENUM, number=26, enum=TransitEncryptionMode,
+    )
     replica_count = proto.Field(proto.INT32, number=31,)
     nodes = proto.RepeatedField(proto.MESSAGE, number=32, message="NodeInfo",)
     read_endpoint = proto.Field(proto.STRING, number=33,)
@@ -334,6 +374,31 @@ class GetInstanceRequest(proto.Message):
     """
 
     name = proto.Field(proto.STRING, number=1,)
+
+
+class GetInstanceAuthStringRequest(proto.Message):
+    r"""Request for
+    [GetInstanceAuthString][google.cloud.redis.v1.CloudRedis.GetInstanceAuthString].
+
+    Attributes:
+        name (str):
+            Required. Redis instance resource name using the form:
+            ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
+            where ``location_id`` refers to a GCP region.
+    """
+
+    name = proto.Field(proto.STRING, number=1,)
+
+
+class InstanceAuthString(proto.Message):
+    r"""Instance AUTH string details.
+
+    Attributes:
+        auth_string (str):
+            AUTH string set on the instance.
+    """
+
+    auth_string = proto.Field(proto.STRING, number=1,)
 
 
 class CreateInstanceRequest(proto.Message):
@@ -600,6 +665,34 @@ class ZoneMetadata(proto.Message):
     empty and reserved for future use only.
 
     """
+
+
+class TlsCertificate(proto.Message):
+    r"""TlsCertificate Resource
+
+    Attributes:
+        serial_number (str):
+            Serial number, as extracted from the
+            certificate.
+        cert (str):
+            PEM representation.
+        create_time (google.protobuf.timestamp_pb2.Timestamp):
+            Output only. The time when the certificate was created in
+            `RFC 3339 <https://tools.ietf.org/html/rfc3339>`__ format,
+            for example ``2020-05-18T00:00:00.094Z``.
+        expire_time (google.protobuf.timestamp_pb2.Timestamp):
+            Output only. The time when the certificate expires in `RFC
+            3339 <https://tools.ietf.org/html/rfc3339>`__ format, for
+            example ``2020-05-18T00:00:00.094Z``.
+        sha1_fingerprint (str):
+            Sha1 Fingerprint of the certificate.
+    """
+
+    serial_number = proto.Field(proto.STRING, number=1,)
+    cert = proto.Field(proto.STRING, number=2,)
+    create_time = proto.Field(proto.MESSAGE, number=3, message=timestamp_pb2.Timestamp,)
+    expire_time = proto.Field(proto.MESSAGE, number=4, message=timestamp_pb2.Timestamp,)
+    sha1_fingerprint = proto.Field(proto.STRING, number=5,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
