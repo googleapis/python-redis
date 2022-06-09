@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-redis/#history
 
+## [1.0.2](https://github.com/googleapis/python-redis/compare/v1.0.1...v1.0.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf<4.0.0 on v1 branch ([#200](https://github.com/googleapis/python-redis/issues/200)) ([9285d25](https://github.com/googleapis/python-redis/commit/9285d25b9b909e45df8bacb6520b2f07297a00a0))
+
 ### [1.0.1](https://github.com/googleapis/python-redis/compare/v1.0.0...v1.0.1) (2022-03-25)
 
 
