@@ -3869,7 +3869,6 @@ def test_cloud_redis_transport_auth_adc(transport_class):
     [
         transports.CloudRedisGrpcTransport,
         transports.CloudRedisGrpcAsyncIOTransport,
-        transports.CloudRedisRestTransport,
     ],
 )
 def test_cloud_redis_transport_auth_gdch_credentials(transport_class):
