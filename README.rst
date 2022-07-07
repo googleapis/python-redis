@@ -3,7 +3,7 @@ Python Client for Cloud Redis API
 
 |stable| |pypi| |versions|
 
-`Cloud Redis API`_: 
+`Cloud Redis API`_: is a fully managed Redis service for the Google Cloud. Applications running on Google Cloud can achieve extreme performance by leveraging the highly scalable, available, secure Redis service without the burden of managing complex Redis deployments.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
