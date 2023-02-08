@@ -14,25 +14,27 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -40,11 +42,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.redis_v1beta1.types import cloud_redis
 from google.longrunning import operations_pb2  # type: ignore
 
-from .base import CloudRedisTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.redis_v1beta1.types import cloud_redis
 
+from .base import CloudRedisTransport
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -161,7 +164,12 @@ class CloudRedisRestInterceptor:
 
 
     """
-    def pre_create_instance(self, request: cloud_redis.CreateInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.CreateInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_instance(
+        self,
+        request: cloud_redis.CreateInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.CreateInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -169,7 +177,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_create_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_instance
 
         Override in a subclass to manipulate the response
@@ -177,7 +187,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_instance(self, request: cloud_redis.DeleteInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.DeleteInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_instance(
+        self,
+        request: cloud_redis.DeleteInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.DeleteInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -185,7 +200,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_instance
 
         Override in a subclass to manipulate the response
@@ -193,7 +210,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_export_instance(self, request: cloud_redis.ExportInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.ExportInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_export_instance(
+        self,
+        request: cloud_redis.ExportInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.ExportInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for export_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -201,7 +223,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_export_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_export_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for export_instance
 
         Override in a subclass to manipulate the response
@@ -209,7 +233,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_failover_instance(self, request: cloud_redis.FailoverInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.FailoverInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_failover_instance(
+        self,
+        request: cloud_redis.FailoverInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.FailoverInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for failover_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -217,7 +246,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_failover_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_failover_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for failover_instance
 
         Override in a subclass to manipulate the response
@@ -225,7 +256,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_instance(self, request: cloud_redis.GetInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.GetInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_instance(
+        self,
+        request: cloud_redis.GetInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.GetInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -241,7 +277,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_instance_auth_string(self, request: cloud_redis.GetInstanceAuthStringRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.GetInstanceAuthStringRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_instance_auth_string(
+        self,
+        request: cloud_redis.GetInstanceAuthStringRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.GetInstanceAuthStringRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_instance_auth_string
 
         Override in a subclass to manipulate the request or metadata
@@ -249,7 +290,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_get_instance_auth_string(self, response: cloud_redis.InstanceAuthString) -> cloud_redis.InstanceAuthString:
+    def post_get_instance_auth_string(
+        self, response: cloud_redis.InstanceAuthString
+    ) -> cloud_redis.InstanceAuthString:
         """Post-rpc interceptor for get_instance_auth_string
 
         Override in a subclass to manipulate the response
@@ -257,7 +300,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_import_instance(self, request: cloud_redis.ImportInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.ImportInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_import_instance(
+        self,
+        request: cloud_redis.ImportInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.ImportInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for import_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -265,7 +313,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_import_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_import_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for import_instance
 
         Override in a subclass to manipulate the response
@@ -273,7 +323,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_instances(self, request: cloud_redis.ListInstancesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.ListInstancesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_instances(
+        self,
+        request: cloud_redis.ListInstancesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.ListInstancesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_instances
 
         Override in a subclass to manipulate the request or metadata
@@ -281,7 +336,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_list_instances(self, response: cloud_redis.ListInstancesResponse) -> cloud_redis.ListInstancesResponse:
+    def post_list_instances(
+        self, response: cloud_redis.ListInstancesResponse
+    ) -> cloud_redis.ListInstancesResponse:
         """Post-rpc interceptor for list_instances
 
         Override in a subclass to manipulate the response
@@ -289,7 +346,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_reschedule_maintenance(self, request: cloud_redis.RescheduleMaintenanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.RescheduleMaintenanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_reschedule_maintenance(
+        self,
+        request: cloud_redis.RescheduleMaintenanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.RescheduleMaintenanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for reschedule_maintenance
 
         Override in a subclass to manipulate the request or metadata
@@ -297,7 +359,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_reschedule_maintenance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_reschedule_maintenance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for reschedule_maintenance
 
         Override in a subclass to manipulate the response
@@ -305,7 +369,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_instance(self, request: cloud_redis.UpdateInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.UpdateInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_instance(
+        self,
+        request: cloud_redis.UpdateInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.UpdateInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -313,7 +382,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_update_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_update_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for update_instance
 
         Override in a subclass to manipulate the response
@@ -321,7 +392,12 @@ class CloudRedisRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_upgrade_instance(self, request: cloud_redis.UpgradeInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[cloud_redis.UpgradeInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_upgrade_instance(
+        self,
+        request: cloud_redis.UpgradeInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[cloud_redis.UpgradeInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for upgrade_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -329,7 +405,9 @@ class CloudRedisRestInterceptor:
         """
         return request, metadata
 
-    def post_upgrade_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_upgrade_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for upgrade_instance
 
         Override in a subclass to manipulate the response
@@ -379,20 +457,21 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'redis.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[CloudRedisRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "redis.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[CloudRedisRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -431,7 +510,9 @@ class CloudRedisRestTransport(CloudRedisTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -442,10 +523,11 @@ class CloudRedisRestTransport(CloudRedisTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -461,18 +543,20 @@ class CloudRedisRestTransport(CloudRedisTransport):
         """
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
-            http_options: Dict[str, List[Dict[str, str]]] = {
-            }
+            http_options: Dict[str, List[Dict[str, str]]] = {}
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1beta1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1beta1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -481,19 +565,26 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("CreateInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "instanceId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "instanceId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.CreateInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.CreateInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create instance method over HTTP.
 
             Args:
@@ -515,11 +606,12 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{parent=projects/*/locations/*}/instances',
-                'body': 'instance',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{parent=projects/*/locations/*}/instances",
+                    "body": "instance",
+                },
             ]
             request, metadata = self._interceptor.pre_create_instance(request, metadata)
             pb_request = cloud_redis.CreateInstanceRequest.pb(request)
@@ -528,33 +620,35 @@ class CloudRedisRestTransport(CloudRedisTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -571,19 +665,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("DeleteInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.DeleteInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.DeleteInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete instance method over HTTP.
 
             Args:
@@ -605,37 +704,40 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_instance(request, metadata)
             pb_request = cloud_redis.DeleteInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -652,19 +754,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("ExportInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.ExportInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.ExportInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the export instance method over HTTP.
 
             Args:
@@ -686,11 +793,12 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}:export',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}:export",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_export_instance(request, metadata)
             pb_request = cloud_redis.ExportInstanceRequest.pb(request)
@@ -699,33 +807,35 @@ class CloudRedisRestTransport(CloudRedisTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -742,19 +852,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("FailoverInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.FailoverInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.FailoverInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the failover instance method over HTTP.
 
             Args:
@@ -776,46 +891,51 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}:failover',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}:failover",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_failover_instance(request, metadata)
+            request, metadata = self._interceptor.pre_failover_instance(
+                request, metadata
+            )
             pb_request = cloud_redis.FailoverInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -832,19 +952,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("GetInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.GetInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_redis.Instance:
+        def __call__(
+            self,
+            request: cloud_redis.GetInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_redis.Instance:
             r"""Call the get instance method over HTTP.
 
             Args:
@@ -863,37 +988,40 @@ class CloudRedisRestTransport(CloudRedisTransport):
                     A Memorystore for Redis instance.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_instance(request, metadata)
             pb_request = cloud_redis.GetInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -912,19 +1040,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("GetInstanceAuthString")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.GetInstanceAuthStringRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_redis.InstanceAuthString:
+        def __call__(
+            self,
+            request: cloud_redis.GetInstanceAuthStringRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_redis.InstanceAuthString:
             r"""Call the get instance auth string method over HTTP.
 
             Args:
@@ -943,37 +1076,42 @@ class CloudRedisRestTransport(CloudRedisTransport):
                     Instance AUTH string details.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}/authString',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}/authString",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_instance_auth_string(request, metadata)
+            request, metadata = self._interceptor.pre_get_instance_auth_string(
+                request, metadata
+            )
             pb_request = cloud_redis.GetInstanceAuthStringRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -992,19 +1130,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("ImportInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.ImportInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.ImportInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the import instance method over HTTP.
 
             Args:
@@ -1026,11 +1169,12 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}:import',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}:import",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_import_instance(request, metadata)
             pb_request = cloud_redis.ImportInstanceRequest.pb(request)
@@ -1039,33 +1183,35 @@ class CloudRedisRestTransport(CloudRedisTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1082,19 +1228,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("ListInstances")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.ListInstancesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> cloud_redis.ListInstancesResponse:
+        def __call__(
+            self,
+            request: cloud_redis.ListInstancesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> cloud_redis.ListInstancesResponse:
             r"""Call the list instances method over HTTP.
 
             Args:
@@ -1115,37 +1266,40 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta1/{parent=projects/*/locations/*}/instances',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta1/{parent=projects/*/locations/*}/instances",
+                },
             ]
             request, metadata = self._interceptor.pre_list_instances(request, metadata)
             pb_request = cloud_redis.ListInstancesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1164,19 +1318,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("RescheduleMaintenance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.RescheduleMaintenanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.RescheduleMaintenanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the reschedule maintenance method over HTTP.
 
             Args:
@@ -1198,46 +1357,51 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}:rescheduleMaintenance',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}:rescheduleMaintenance",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_reschedule_maintenance(request, metadata)
+            request, metadata = self._interceptor.pre_reschedule_maintenance(
+                request, metadata
+            )
             pb_request = cloud_redis.RescheduleMaintenanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1254,19 +1418,26 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("UpdateInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "updateMask" : {},        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "updateMask": {},
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.UpdateInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.UpdateInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the update instance method over HTTP.
 
             Args:
@@ -1288,11 +1459,12 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1beta1/{instance.name=projects/*/locations/*/instances/*}',
-                'body': 'instance',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1beta1/{instance.name=projects/*/locations/*/instances/*}",
+                    "body": "instance",
+                },
             ]
             request, metadata = self._interceptor.pre_update_instance(request, metadata)
             pb_request = cloud_redis.UpdateInstanceRequest.pb(request)
@@ -1301,33 +1473,35 @@ class CloudRedisRestTransport(CloudRedisTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1344,19 +1518,24 @@ class CloudRedisRestTransport(CloudRedisTransport):
         def __hash__(self):
             return hash("UpgradeInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: cloud_redis.UpgradeInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: cloud_redis.UpgradeInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the upgrade instance method over HTTP.
 
             Args:
@@ -1378,46 +1557,51 @@ class CloudRedisRestTransport(CloudRedisTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=projects/*/locations/*/instances/*}:upgrade',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=projects/*/locations/*/instances/*}:upgrade",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_upgrade_instance(request, metadata)
+            request, metadata = self._interceptor.pre_upgrade_instance(
+                request, metadata
+            )
             pb_request = cloud_redis.UpgradeInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1431,92 +1615,96 @@ class CloudRedisRestTransport(CloudRedisTransport):
             return resp
 
     @property
-    def create_instance(self) -> Callable[
-            [cloud_redis.CreateInstanceRequest],
-            operations_pb2.Operation]:
+    def create_instance(
+        self,
+    ) -> Callable[[cloud_redis.CreateInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_instance(self) -> Callable[
-            [cloud_redis.DeleteInstanceRequest],
-            operations_pb2.Operation]:
+    def delete_instance(
+        self,
+    ) -> Callable[[cloud_redis.DeleteInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def export_instance(self) -> Callable[
-            [cloud_redis.ExportInstanceRequest],
-            operations_pb2.Operation]:
+    def export_instance(
+        self,
+    ) -> Callable[[cloud_redis.ExportInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ExportInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._ExportInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def failover_instance(self) -> Callable[
-            [cloud_redis.FailoverInstanceRequest],
-            operations_pb2.Operation]:
+    def failover_instance(
+        self,
+    ) -> Callable[[cloud_redis.FailoverInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._FailoverInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._FailoverInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_instance(self) -> Callable[
-            [cloud_redis.GetInstanceRequest],
-            cloud_redis.Instance]:
+    def get_instance(
+        self,
+    ) -> Callable[[cloud_redis.GetInstanceRequest], cloud_redis.Instance]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_instance_auth_string(self) -> Callable[
-            [cloud_redis.GetInstanceAuthStringRequest],
-            cloud_redis.InstanceAuthString]:
+    def get_instance_auth_string(
+        self,
+    ) -> Callable[
+        [cloud_redis.GetInstanceAuthStringRequest], cloud_redis.InstanceAuthString
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetInstanceAuthString(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetInstanceAuthString(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def import_instance(self) -> Callable[
-            [cloud_redis.ImportInstanceRequest],
-            operations_pb2.Operation]:
+    def import_instance(
+        self,
+    ) -> Callable[[cloud_redis.ImportInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ImportInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._ImportInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_instances(self) -> Callable[
-            [cloud_redis.ListInstancesRequest],
-            cloud_redis.ListInstancesResponse]:
+    def list_instances(
+        self,
+    ) -> Callable[
+        [cloud_redis.ListInstancesRequest], cloud_redis.ListInstancesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListInstances(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListInstances(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def reschedule_maintenance(self) -> Callable[
-            [cloud_redis.RescheduleMaintenanceRequest],
-            operations_pb2.Operation]:
+    def reschedule_maintenance(
+        self,
+    ) -> Callable[[cloud_redis.RescheduleMaintenanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RescheduleMaintenance(self._session, self._host, self._interceptor) # type: ignore
+        return self._RescheduleMaintenance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_instance(self) -> Callable[
-            [cloud_redis.UpdateInstanceRequest],
-            operations_pb2.Operation]:
+    def update_instance(
+        self,
+    ) -> Callable[[cloud_redis.UpdateInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def upgrade_instance(self) -> Callable[
-            [cloud_redis.UpgradeInstanceRequest],
-            operations_pb2.Operation]:
+    def upgrade_instance(
+        self,
+    ) -> Callable[[cloud_redis.UpgradeInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpgradeInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpgradeInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -1526,6 +1714,4 @@ class CloudRedisRestTransport(CloudRedisTransport):
         self._session.close()
 
 
-__all__=(
-    'CloudRedisRestTransport',
-)
+__all__ = ("CloudRedisRestTransport",)
